@@ -1,0 +1,81 @@
+[core]
+  compression = -1
+  editor = vim
+  excludesfile = ~/.gitignore
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[alias]
+  co = checkout
+  s = status
+[blame]
+  showEmail = true
+[branch]
+  sort = -committerdate
+[color]
+  ui = auto
+[column]
+  ui = auto dense
+[commit]
+  cleanup = strip
+  gpgSign = true
+[credential]
+  helper = osxkeychain
+[diff]
+  guitool = vscode
+  algorithm = histogram
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[fetch]
+  prune = true
+  parallel = 4
+[format]
+  pretty = fav
+[grep]
+  extendRegexp = true
+  lineNumber = true
+[gpg]
+  program = /usr/local/bin/gpg
+[help]
+  autocorrect = 1
+[http]
+  cookiefile = /Users/htdvisser/.gitcookies
+[http "https://gopkg.in"]
+  followRedirects = true
+[log]
+  abbrevCommit = true
+[merge]
+  guitool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+[mergetool]
+  keepBackup = false
+[pretty]
+  fav = "%C(yellow)%h%C(reset)\t%<(40,trunc)%s\t(%C(cyan)%an %C(dim)%ar%C(reset))%C(dim)%d"
+[pull]
+  ff = only
+[push]
+  default = upstream
+[rebase]
+  autoSquash = true
+[rerere]
+  enabled = true
+  autoUpdate = true
+[status]
+  short = true
+  branch = true
+[tag]
+  gpgSign = true
+  sort = -v:refname
+[versionsort]
+  suffix = -pre
+  suffix = -rc
+
+[user]
+  useConfigOnly = true
+  name = Hylke Visser
+[github]
+  user = htdvisser
+[hub]
+  protocol = https
+
+[include]
+  path = ~/.gitconfig.local
