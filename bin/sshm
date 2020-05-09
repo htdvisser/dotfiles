@@ -1,0 +1,42 @@
+#!/usr/bin/env osascript
+
+-- AppleScript for SSH-ing to multiple servers and directing keystrokes to all
+-- servers. This script works with iTerm2 (tested with version 3.0.8).
+--
+-- Author: Hylke Visser <htdvisser@gmail.com>
+
+on run argv
+
+  set host_names to argv
+
+  set host_sessions to {}
+  set num_hosts to count of host_names
+
+  tell application "iTerm"
+    activate
+
+    set newWindow to (create window with default profile)
+    set newSession to first session of first tab of newWindow
+
+    tell newSession
+      repeat with n from 1 to num_hosts
+        set sess to split horizontally with default profile
+        copy sess to the end of host_sessions
+      end repeat
+      close
+    end tell
+
+    delay 1
+
+    repeat with n from 1 to num_hosts
+      tell item n of host_sessions
+        write text "ssh " & (item n of host_names)
+        write text "clear"
+      end tell
+    end repeat
+
+    tell application "System Events" to keystroke "i" using {command down, option down}
+
+  end tell
+
+end run
