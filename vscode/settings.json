@@ -1,0 +1,85 @@
+{
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "line",
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": false,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [80, 120],
+  "editor.trimAutoWhitespace": true,
+  "extensions.autoUpdate": true,
+  "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    ".envrc": "shellscript"
+  },
+  "files.autoSave": "off",
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/node_modules/": true
+  },
+  "files.insertFinalNewline": true,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "go.buildOnSave": "off",
+  "go.coverOnSave": true,
+  "go.coverageDecorator": {
+    "coveredGutterStyle": "blockgreen",
+    "type": "gutter",
+    "uncoveredGutterStyle": "blockred"
+  },
+  "go.gopath": "/Users/htdvisser",
+  "go.languageServerExperimentalFeatures": {
+    "diagnostics": true
+  },
+  "go.lintFlags": ["-config", "/Users/htdvisser/.revive.toml"],
+  "go.lintTool": "revive",
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.useLanguageServer": true,
+  "protoc": {
+    "options": [
+      "--proto_path=${workspaceFolder}/api",
+      "--proto_path=${workspaceFolder}/api/third_party"
+    ]
+  },
+  "terminal.external.osxExec": "iTerm.app",
+  "window.zoomLevel": 0,
+  "workbench.activityBar.visible": true,
+  "workbench.colorTheme": "Base16 Dark Summerfruit",
+  "workbench.startupEditor": "none",
+
+  // Language-specific options:
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
