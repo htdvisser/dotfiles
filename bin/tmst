@@ -1,0 +1,19 @@
+#!/usr/bin/env lua
+
+if not arg[1] then
+    print("Usage: tmst [timestamp]")
+    os.exit()
+end
+
+local timestamp = tonumber(arg[1])
+if timestamp >= 1000000000000000000 then -- nanoseconds
+	timestamp = math.floor(timestamp / 1000000000)
+end
+if timestamp >= 1000000000000000 then -- microseconds
+	timestamp = math.floor(timestamp / 1000000)
+end
+if timestamp >= 1000000000000 then -- milliseconds
+	timestamp = math.floor(timestamp / 1000)
+end
+
+print(os.date("%d %b %Y %H:%M:%S", timestamp))
