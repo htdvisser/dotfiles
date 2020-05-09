@@ -1,0 +1,8 @@
+mfa_serial=$(aws iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
+echo "Using MFA device $mfa_serial"
+
+json=$(aws sts get-session-token --serial-number $mfa_serial --token-code $1)
+
+export AWS_ACCESS_KEY_ID=$(echo $json | jq -r .Credentials.AccessKeyId)
+export AWS_SECRET_ACCESS_KEY=$(echo $json | jq -r .Credentials.SecretAccessKey)
+export AWS_SESSION_TOKEN=$(echo $json | jq -r .Credentials.SessionToken)
