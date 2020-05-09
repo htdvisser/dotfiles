@@ -3,7 +3,7 @@
 dotpath=$(dirname $(readlink -f "$0"))
 . "$dotpath/../util.sh"
 
-if [ $(uname -s) = "Darwin" ]; then
+if [ "$(uname -s)" = "Darwin" ]; then
   code_user_dir="$HOME/Library/Application Support/Code/User"
 else
   code_user_dir="$HOME/.config/Code/User"

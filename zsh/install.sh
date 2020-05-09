@@ -9,7 +9,7 @@ install_plugin() {
     return
   else
     info "installing plugin $1"
-    curl -sSL https://github.com/zsh-users/$1/archive/master.tar.gz | tar xz -C "$dotpath/plugins/"
+    curl -sSL "https://github.com/zsh-users/$1/archive/master.tar.gz" | tar xz -C "$dotpath/plugins/"
     rm -rf "$dotpath/plugins/$1"
     mv "$dotpath/plugins/$1-master" "$dotpath/plugins/$1"
   fi

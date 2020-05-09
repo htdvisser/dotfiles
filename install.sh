@@ -69,7 +69,7 @@ main() {
   done
 
   if [ "$SYSTEM" = "yes" ]; then
-    if [ $(uname -s) = "Darwin" ]; then
+    if [ "$(uname -s)" = "Darwin" ]; then
       "$DOTFILES/system/setup-macos.sh"
     else
       "$DOTFILES/system/setup-linux.sh"
@@ -81,14 +81,14 @@ main() {
       bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     fi
     brew bundle --file="$DOTFILES/brew/Brewfile-min"
-    if [ $(uname -s) = "Darwin" ]; then
+    if [ "$(uname -s)" = "Darwin" ]; then
       brew bundle --file="$DOTFILES/brew/Brewfile-min-macos"
     else
       brew bundle --file="$DOTFILES/brew/Brewfile-min-linux"
     fi
     if [ "$BREW" = "full" ]; then
       brew bundle --file="$DOTFILES/brew/Brewfile-full"
-      if [ $(uname -s) = "Darwin" ]; then
+      if [ "$(uname -s)" = "Darwin" ]; then
         brew bundle --file="$DOTFILES/brew/Brewfile-full-macos"
       else
         brew bundle --file="$DOTFILES/brew/Brewfile-full-linux"
