@@ -1,1 +1,4 @@
 tap "homebrew/bundle"
+
+brew "ffmpeg"
+brew "imagemagick"
