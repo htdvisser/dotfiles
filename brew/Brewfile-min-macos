@@ -1,1 +1,65 @@
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/services"
+
+# Prerequisites
+
+brew "mas"
+cask "java"
+cask "xquartz"
+
+# GNU tools
+
+brew "coreutils"
+brew "gnu-sed"
+brew "openssh"
+
+# Files
+
+brew "syncthing", restart_service: true
+cask "google-drive-file-stream"
+mas "OneDrive", id: 823766827
+
+# Communication
+
+cask "whatsapp"
+mas "Airmail", id: 918858936
+mas "Slack", id: 803453959
+mas "Telegram", id: 747648890
+
+# Security
+
+brew "pinentry-mac"
+cask "1password"
+cask "keybase"
+cask "sekey"
+
+# Internet
+
+cask "firefox-developer-edition"
+
+# Development
+
+brew "postgresql", restart_service: true
+brew "redis", restart_service: true
+cask "docker"
+cask "fork"
+cask "iterm2"
+cask "visual-studio-code"
+
+# Cloud
+
+brew "aws-iam-authenticator"
+brew "awscli"
+brew "terraform"
+
+# Media
+
+cask "spotify"
+cask "vlc"
+
+# Utilities
+
+cask "alfred"
+cask "spectacle"
+cask "the-unarchiver"

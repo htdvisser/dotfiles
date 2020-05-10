@@ -1,1 +1,83 @@
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/services"
+tap "xo/xo"
+
+# Communication
+
+cask "skype"
+
+# Security
+
+cask "viscosity"
+
+# Internet
+
+cask "chromium"
+cask "google-chrome"
+
+# Development
+
+brew "hexyl"
+brew "packer"
+brew "xo/xo/usql"
+cask "pgadmin4"
+cask "vagrant"
+cask "virtualbox"
+cask "virtualbox-extension-pack"
+
+# Cloud
+
+brew "azure-cli"
+brew "cfn-lint"
+brew "firebase-cli"
+brew "hcloud"
+cask "google-cloud-sdk"
+cask "microsoft-azure-storage-explorer"
+
+# Utilities
+
+brew "speedtest-cli"
+cask "gpg-suite"
+cask "grandperspective"
+cask "istat-menus"
+cask "bartender"
+cask "adobe-acrobat-reader"
+
+# Fonts
+
+cask "font-fira-code"
+cask "font-fira-sans"
+cask "font-fontawesome"
+cask "font-inconsolata"
+cask "font-lato"
+cask "font-league-spartan"
+cask "font-linux-biolinum"
+cask "font-linux-libertine"
+cask "font-lora"
+cask "font-montserrat"
+cask "font-noto-serif"
+cask "font-open-sans"
+cask "font-raleway"
+cask "font-roboto"
+cask "font-roboto-mono"
+cask "font-roboto-slab"
+cask "font-source-code-pro"
+cask "font-source-sans-pro"
+cask "font-source-serif-pro"
+cask "font-ubuntu"
+
+# Mac App Store
+
+mas "Pages", id: 409201541
+mas "Keynote", id: 409183694
+
+mas "Microsoft Word", id: 462054704
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft OneNote", id: 784801555
+
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456
+mas "Affinity Publisher", id: 881418622
