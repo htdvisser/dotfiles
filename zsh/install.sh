@@ -16,6 +16,7 @@ install_plugin() {
 }
 
 install_plugin zsh-autosuggestions
+install_plugin zsh-completions
 install_plugin zsh-syntax-highlighting
 install_plugin zsh-history-substring-search
 
