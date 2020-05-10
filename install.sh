@@ -105,6 +105,7 @@ main() {
         brew bundle --file="$DOTFILES/brew/Brewfile-full-linux"
       fi
     fi
+    brew cleanup
   fi
 
   require_command zsh
