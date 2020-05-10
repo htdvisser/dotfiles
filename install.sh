@@ -78,11 +78,19 @@ main() {
 
   if [ "$BREW" != "no" ]; then
     if ! command_exists brew; then
+      info "installing Homebrew"
       bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
       if [ "$(uname -s)" = "Linux" ]; then
         eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
       fi
     fi
+    info "updating Homebrew"
+    brew update
+    brew upgrade
+    if [ "$(uname -s)" = "Darwin" ]; then
+      brew cask upgrade
+    fi
+    info "installing Homebrew bundles"
     brew bundle --file="$DOTFILES/brew/Brewfile-min"
     if [ "$(uname -s)" = "Darwin" ]; then
       brew bundle --file="$DOTFILES/brew/Brewfile-min-macos"
