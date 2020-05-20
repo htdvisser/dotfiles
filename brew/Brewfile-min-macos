@@ -63,3 +63,9 @@ cask "vlc"
 cask "alfred"
 cask "spectacle"
 cask "the-unarchiver"
+
+# Fonts
+
+cask "font-fira-code"
+cask "font-iosevka-slab"
+cask "font-iosevka"

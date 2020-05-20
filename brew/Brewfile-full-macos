@@ -47,7 +47,6 @@ cask "adobe-acrobat-reader"
 
 # Fonts
 
-cask "font-fira-code"
 cask "font-fira-sans"
 cask "font-fontawesome"
 cask "font-inconsolata"
