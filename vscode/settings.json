@@ -57,7 +57,10 @@
   "terminal.external.osxExec": "iTerm.app",
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Base16 Dark Summerfruit",
+  "workbench.colorTheme": "Base16 Dark Chalk",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#252525"
+  },
   "workbench.startupEditor": "none",
 
   // Language-specific options:
