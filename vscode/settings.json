@@ -40,7 +40,7 @@
     "type": "gutter",
     "uncoveredGutterStyle": "blockred"
   },
-  "go.gopath": "/Users/htdvisser",
+  "go.gopath": "/Users/htdvisser/go",
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
