@@ -1,12 +1,14 @@
-mfa_serial=$(aws iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
+profile=${1:-$AWS_MFA_PROFILE}
+
+mfa_serial=$(AWS_PROFILE="$profile" aws iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
 echo "Using MFA device $mfa_serial"
 
-token_code=$1
+token_code=$2
 if [[ -z "$token_code" ]]; then
-  token_code=$(ykman oath code $AWS_PROFILE -s)
+  token_code=$(ykman oath code "$mfa_serial" -s)
 fi
 
-json=$(aws sts get-session-token --serial-number $mfa_serial --token-code $token_code)
+json=$(AWS_PROFILE="$profile" aws sts get-session-token --serial-number $mfa_serial --token-code $token_code)
 
 export AWS_ACCESS_KEY_ID=$(echo $json | jq -r .Credentials.AccessKeyId)
 export AWS_SECRET_ACCESS_KEY=$(echo $json | jq -r .Credentials.SecretAccessKey)
