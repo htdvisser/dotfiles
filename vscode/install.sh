@@ -26,8 +26,8 @@ if command_exists code; then
     EditorConfig.EditorConfig
     esbenp.prettier-vscode
     GitHub.vscode-pull-request-github
+    golang.go
     ms-python.python
-    ms-vscode.Go
     samverschueren.final-newline
     streetsidesoftware.code-spell-checker
     wayou.vscode-todo-highlight
