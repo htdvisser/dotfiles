@@ -1,0 +1,49 @@
+# Set Up:
+#
+#   ykman oath add --touch arn:aws:iam::<account_id>:mfa/<iam_user>
+#
+# Environment (with direnv):
+#
+#   AWS_MFA_PROFILE=default
+#   AWS_ROLE_ARN=arn:aws:iam::<account_id>:role/<role_name>
+#   AWS_ROLE_SESSION_NAME=cli
+#
+# Usage:
+#
+#   aws-assume-role
+
+AWS_MFA_PROFILE=${AWS_MFA_PROFILE:-default}
+if [[ -z "$AWS_MFA_PROFILE" ]]; then
+  echo "Missing AWS_MFA_PROFILE"
+  return 1
+fi
+
+unset AWS_ACCESS_KEY_ID
+unset AWS_SECRET_ACCESS_KEY
+unset AWS_SESSION_TOKEN
+
+mfa_serial=$(AWS_PROFILE="$AWS_MFA_PROFILE" aws iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
+if [[ -z "$mfa_serial" ]]; then
+  echo "Missing AWS user"
+  return 1
+fi
+echo "Using MFA device $mfa_serial"
+
+token_code=$(ykman oath code "$mfa_serial" -s)
+
+if [[ -z "$AWS_ROLE_ARN" ]]; then
+  echo "Missing role ARN"
+  return 1
+fi
+
+AWS_ROLE_SESSION_NAME=${AWS_ROLE_SESSION_NAME:-cli}
+
+json=$(AWS_PROFILE="$AWS_MFA_PROFILE" aws sts assume-role --role-arn "$AWS_ROLE_ARN" --role-session-name "$AWS_ROLE_SESSION_NAME" --serial-number "$mfa_serial" --token-code "$token_code")
+if [[ $? != 0 ]]; then
+  echo "Could not assume role"
+  return 1
+fi
+
+export AWS_ACCESS_KEY_ID=$(echo $json | jq -r .Credentials.AccessKeyId)
+export AWS_SECRET_ACCESS_KEY=$(echo $json | jq -r .Credentials.SecretAccessKey)
+export AWS_SESSION_TOKEN=$(echo $json | jq -r .Credentials.SessionToken)
