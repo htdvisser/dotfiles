@@ -25,6 +25,7 @@ if command_exists code; then
     eamodio.gitlens
     EditorConfig.EditorConfig
     esbenp.prettier-vscode
+    GitHub.github-vscode-theme
     GitHub.vscode-pull-request-github
     golang.go
     ms-python.python
