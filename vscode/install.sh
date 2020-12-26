@@ -31,6 +31,7 @@ if command_exists code; then
     ms-python.python
     samverschueren.final-newline
     streetsidesoftware.code-spell-checker
+    streetsidesoftware.code-spell-checker-dutch
     wayou.vscode-todo-highlight
     zxh404.vscode-proto3
   "
