@@ -44,6 +44,14 @@
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
+  "gopls": {
+    "gofumpt": true,
+    "usePlaceholders": true,
+    "analyses": {
+      "shadow": true,
+      "unusedparams": true
+    }
+  },
   "go.lintFlags": ["-config", "/Users/htdvisser/.revive.toml"],
   "go.lintTool": "revive",
   "go.useCodeSnippetsOnFunctionSuggest": true,
