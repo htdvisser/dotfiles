@@ -5,6 +5,17 @@ dotpath=$(dirname $(readlink -f "$0"))
 
 info "installing macOS system"
 
-# TODO: Install and set up stuff.
+sudo tee /etc/paths <<EOF
+/opt/homebrew/bin
+/opt/homebrew/sbin
+/usr/local/bin
+/usr/local/sbin
+/usr/bin
+/usr/sbin
+/bin
+/sbin
+EOF
+
+sudo launchctl config user path "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 success "installed macOS system"
