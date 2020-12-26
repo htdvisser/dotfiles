@@ -21,6 +21,7 @@ if command_exists code; then
   modules="
     2gua.rainbow-brackets
     AndrsDC.base16-themes
+    casualjim.gotemplate
     dbaeumer.vscode-eslint
     eamodio.gitlens
     EditorConfig.EditorConfig
@@ -28,10 +29,15 @@ if command_exists code; then
     GitHub.github-vscode-theme
     GitHub.vscode-pull-request-github
     golang.go
+    hashicorp.terraform
+    ms-azuretools.vscode-docker
     ms-python.python
+    ms-python.vscode-pylance
+    rust-lang.rust
     samverschueren.final-newline
     streetsidesoftware.code-spell-checker
     streetsidesoftware.code-spell-checker-dutch
+    svelte.svelte-vscode
     wayou.vscode-todo-highlight
     zxh404.vscode-proto3
   "
