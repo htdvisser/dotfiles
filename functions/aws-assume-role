@@ -12,9 +12,29 @@
 #
 #   aws-assume-role
 
-AWS_MFA_PROFILE=${AWS_MFA_PROFILE:-default}
+if [[ ! -z "$AWS_PROFILE" ]]; then
+  echo "Using AWS_PROFILE $AWS_PROFILE"
+  if [[ -z "$AWS_MFA_PROFILE" ]]; then
+    AWS_MFA_PROFILE=$(aws configure get source_profile --profile $AWS_PROFILE)
+    if [[ ! -z "$AWS_MFA_PROFILE" ]]; then
+      echo "Using source_profile $AWS_MFA_PROFILE (from $AWS_PROFILE) for MFA"
+    fi
+  fi
+  if [[ -z "$AWS_ROLE_ARN" ]]; then
+    AWS_ROLE_ARN=$(aws configure get role_arn --profile $AWS_PROFILE)
+    if [[ ! -z "$AWS_ROLE_ARN" ]]; then
+      echo "Using role_arn $AWS_ROLE_ARN (from $AWS_PROFILE)"
+    fi
+  fi
+fi
+
 if [[ -z "$AWS_MFA_PROFILE" ]]; then
-  echo "Missing AWS_MFA_PROFILE"
+  echo "Missing AWS_MFA_PROFILE or source_profile in AWS profile"
+  return 1
+fi
+
+if [[ -z "$AWS_ROLE_ARN" ]]; then
+  echo "Missing AWS_ROLE_ARN or role_arn in AWS profile"
   return 1
 fi
 
@@ -22,7 +42,7 @@ unset AWS_ACCESS_KEY_ID
 unset AWS_SECRET_ACCESS_KEY
 unset AWS_SESSION_TOKEN
 
-mfa_serial=$(AWS_PROFILE="$AWS_MFA_PROFILE" aws iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
+mfa_serial=$(aws --profile $AWS_MFA_PROFILE iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
 if [[ -z "$mfa_serial" ]]; then
   echo "Missing AWS user"
   return 1
@@ -30,11 +50,6 @@ fi
 echo "Using MFA device $mfa_serial"
 
 token_code=$(ykman oath code "$mfa_serial" -s)
-
-if [[ -z "$AWS_ROLE_ARN" ]]; then
-  echo "Missing role ARN"
-  return 1
-fi
 
 AWS_ROLE_SESSION_NAME=${AWS_ROLE_SESSION_NAME:-cli}
 
