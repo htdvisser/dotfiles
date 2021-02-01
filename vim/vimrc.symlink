@@ -1,17 +1,22 @@
 syntax on
 filetype plugin indent on
-set modelines=0
+set modelines=2
 set number
 set ruler
 set visualbell
 set encoding=utf-8
 set wrap
-set textwidth=79
+set textwidth=80
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set expandtab
+set expandtab smarttab
+set autoindent smartindent
 set shiftround
 set laststatus=2
 set showmode
-colorscheme delek
+set scrolloff=5
+set ignorecase smartcase
+set hlsearch
+set incsearch
+colorscheme default
