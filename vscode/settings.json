@@ -34,29 +34,31 @@
   "files.insertFinalNewline": true,
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
-  "go.buildOnSave": "off",
-  "go.coverOnSave": true,
+  "go.addTags": {
+    "tags": "json,yaml",
+    "options": "json=omitempty,yaml=omitempty",
+    "transform": "camelcase"
+  },
+  "go.buildOnSave": "package",
   "go.coverageDecorator": {
     "coveredGutterStyle": "blockgreen",
     "type": "gutter",
     "uncoveredGutterStyle": "blockred"
   },
-  "go.gopath": "/Users/htdvisser/go",
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
   "gopls": {
-    "gofumpt": true,
-    "usePlaceholders": true,
-    "analyses": {
+    "formatting.gofumpt": true,
+    "ui.completion.usePlaceholders": true,
+    "ui.diagnostic.analyses": {
+      "fieldalignment": true,
       "shadow": true,
       "unusedparams": true
     }
   },
   "go.lintFlags": ["-config", "/Users/htdvisser/.revive.toml"],
   "go.lintTool": "revive",
-  "go.useCodeSnippetsOnFunctionSuggest": true,
-  "go.useLanguageServer": true,
   "protoc": {
     "options": [
       "--proto_path=${workspaceFolder}/api",
