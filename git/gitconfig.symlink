@@ -19,6 +19,12 @@
   gpgSign = true
 [credential]
   helper = osxkeychain
+[url "https://github.com/"]
+	insteadOf = git@github.com:
+[url "https://gist.github.com/"]
+	insteadOf = git@gist.github.com:
+[url "https://gitlab.com/"]
+	insteadOf = git@gitlab.com:
 [diff]
   guitool = vscode
   algorithm = histogram
