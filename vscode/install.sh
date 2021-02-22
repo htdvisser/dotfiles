@@ -5,16 +5,24 @@ dotpath=$(dirname $(readlink -f "$0"))
 
 if [ "$(uname -s)" = "Darwin" ]; then
   code_user_dir="$HOME/Library/Application Support/Code/User"
+  code_insiders_user_dir="$HOME/Library/Application Support/Code - Insiders/User"
 else
   code_user_dir="$HOME/.config/Code/User"
+  code_insiders_user_dir="$HOME/.config/Code - Insiders/User"
 fi
 
 if [ ! -d "$code_user_dir" ]; then
   mkdir -p "$code_user_dir"
 fi
+if [ ! -d "$code_insiders_user_dir" ]; then
+  mkdir -p "$code_insiders_user_dir"
+fi
 
 create_link "$dotpath/settings.json" "$code_user_dir/settings.json"
 create_link "$dotpath/snippets" "$code_user_dir/snippets"
+
+create_link "$dotpath/settings.json" "$code_insiders_user_dir/settings.json"
+create_link "$dotpath/snippets" "$code_insiders_user_dir/snippets"
 
 if command_exists code; then
   # Install extensions from `code --list-extensions`
