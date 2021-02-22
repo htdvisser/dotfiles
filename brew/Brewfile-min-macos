@@ -18,7 +18,6 @@ brew "openssh"
 # Files
 
 brew "syncthing", restart_service: true
-cask "google-drive-file-stream"
 mas "OneDrive", id: 823766827
 
 # Communication
