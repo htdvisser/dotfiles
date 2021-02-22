@@ -23,7 +23,7 @@ mas "OneDrive", id: 823766827
 
 # Communication
 
-cask "whatsapp"
+mas "WhatsApp", id: 1147396723
 mas "Airmail", id: 918858936
 mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
@@ -31,7 +31,7 @@ mas "Telegram", id: 747648890
 # Security
 
 brew "pinentry-mac"
-cask "1password"
+mas "1Password", id: 1333542190
 cask "keybase"
 cask "sekey"
 
@@ -63,7 +63,7 @@ cask "vlc"
 
 cask "alfred"
 cask "spectacle"
-cask "the-unarchiver"
+mas "The Unarchiver", id: 425424353
 
 # Fonts
 
