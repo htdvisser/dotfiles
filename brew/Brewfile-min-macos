@@ -32,6 +32,7 @@ mas "Telegram", id: 747648890
 
 brew "pinentry-mac"
 mas "1Password", id: 1333542190
+mas "WireGuard", id: 1451685025
 cask "keybase"
 cask "sekey"
 
