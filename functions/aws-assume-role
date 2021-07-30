@@ -56,7 +56,7 @@ local token_code=$(ykman oath accounts code "$mfa_serial" -s)
 
 local aws_role_session_name=${AWS_ROLE_SESSION_NAME:-cli}
 
-json=$(AWS_PROFILE="$aws_mfa_profile" aws sts assume-role --role-arn "$aws_role_arn" --role-session-name "$aws_role_session_name" --serial-number "$mfa_serial" --token-code "$token_code")
+json=$(AWS_PROFILE="$aws_mfa_profile" aws sts assume-role --role-arn "$aws_role_arn" --role-session-name "$aws_role_session_name" --serial-number "$mfa_serial" --token-code "$token_code" --duration-seconds 7200)
 if [[ $? != 0 ]]; then
   echo "Could not assume role"
   return 1
