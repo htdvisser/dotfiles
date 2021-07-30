@@ -1,6 +1,6 @@
 # Set Up:
 #
-#   ykman oath add --touch arn:aws:iam::<account_id>:mfa/<iam_user>
+#   ykman oath accounts add --touch arn:aws:iam::<account_id>:mfa/<iam_user>
 #
 # Environment (with direnv):
 #
@@ -52,7 +52,7 @@ if [[ -z "$mfa_serial" ]]; then
 fi
 echo "Using MFA device $mfa_serial"
 
-local token_code=$(ykman oath code "$mfa_serial" -s)
+local token_code=$(ykman oath accounts code "$mfa_serial" -s)
 
 local aws_role_session_name=${AWS_ROLE_SESSION_NAME:-cli}
 
