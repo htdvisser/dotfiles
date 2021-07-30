@@ -1,19 +1,22 @@
-#!/usr/bin/env lua
+#!/usr/bin/env bash
 
-if not arg[1] then
-    print("Usage: tmst [timestamp]")
-    os.exit()
-end
+if [[ -z "$1" ]]
+then
+    echo "Usage: tmst [timestamp]"
+    exit 0
+fi
 
-local timestamp = tonumber(arg[1])
-if timestamp >= 1000000000000000000 then -- nanoseconds
-	timestamp = math.floor(timestamp / 1000000000)
-end
-if timestamp >= 1000000000000000 then -- microseconds
-	timestamp = math.floor(timestamp / 1000000)
-end
-if timestamp >= 1000000000000 then -- milliseconds
-	timestamp = math.floor(timestamp / 1000)
-end
+if [[ $(bc <<< "$1 > 1000000000000000000") == "1" ]]
+then
+  unix=$(bc <<< "$1 / 1000000000")
+elif [[ $(bc <<< "$1 > 1000000000000000") == "1" ]]
+then
+  unix=$(bc <<< "$1 / 1000000")
+elif [[ $(bc <<< "$1 > 1000000000000") == "1" ]]
+then
+  unix=$(bc <<< "$1 / 1000")
+else
+  unix=$1
+fi
 
-print(os.date("%d %b %Y %H:%M:%S", timestamp))
+date -u -d "@$unix" "+%FT%T"
