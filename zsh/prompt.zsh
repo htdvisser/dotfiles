@@ -28,10 +28,18 @@ prompt_precmd() {
   # Command duration
   if [[ $exec_start ]]
   then
-    typeset -i elapsed
-    elapsed=$(($SECONDS * 1000 - $exec_start * 1000))
-    if [[ $elapsed -gt 500 ]]; then
-      print -P "[%F{cyan}${elapsed}ms%f]\a"
+    elapsed=$(( $SECONDS - $exec_start ))
+    elapsed_seconds=$(( $elapsed % 60.0 ))
+    elapsed_minutes=$(( $elapsed / 60 ))
+    if [[ $elapsed_seconds -gt 0.500 ]]; then
+      print -Pn "[%F{cyan}"
+      if [[ $elapsed_minutes -ge 1.0 ]]; then
+        printf "%.0fm" ${elapsed_minutes}
+        printf "%.0fs" ${elapsed_seconds}
+      else
+        printf "%.1fs" ${elapsed_seconds}
+      fi
+      print -P "%f]\a"
     fi
     unset exec_start
   fi
