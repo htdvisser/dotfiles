@@ -20,17 +20,15 @@ prompt_precmd() {
   print ''
 
   # Exit code
-  if [[ $res != 0 ]]
-  then
+  if [[ $res != 0 ]]; then
     print -P "[%F{yellow}$res%f]"
   fi
 
   # Command duration
-  if [[ $exec_start ]]
-  then
-    elapsed=$(( $SECONDS - $exec_start ))
-    elapsed_seconds=$(( $elapsed % 60.0 ))
-    elapsed_minutes=$(( $elapsed / 60 ))
+  if [[ $exec_start ]]; then
+    elapsed=$(($SECONDS - $exec_start))
+    elapsed_seconds=$(($elapsed % 60.0))
+    elapsed_minutes=$(($elapsed / 60))
     if [[ $elapsed_seconds -gt 0.500 ]]; then
       print -Pn "[%F{cyan}"
       if [[ $elapsed_minutes -ge 1.0 ]]; then

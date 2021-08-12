@@ -8,13 +8,19 @@ if command -v brew >/dev/null 2>&1; then
   brew_prefix=$(brew --prefix)
 
   # Use GNU core utils instead of macOS core utils.
-  [[ -d "$brew_prefix/opt/coreutils/libexec/gnubin" ]] && export PATH="$brew_prefix/opt/coreutils/libexec/gnubin:$PATH"
+  if [ -d "$brew_prefix/opt/coreutils/libexec/gnubin" ]; then
+    export PATH="$brew_prefix/opt/coreutils/libexec/gnubin:$PATH"
+  fi
 
   # Use GNU sed instead of macOS (BSD) sed.
-  [[ -d "$brew_prefix/opt/gnu-sed/libexec/gnubin" ]] && export PATH="$brew_prefix/opt/gnu-sed/libexec/gnubin:$PATH"
+  if [ -d "$brew_prefix/opt/gnu-sed/libexec/gnubin" ]; then
+    export PATH="$brew_prefix/opt/gnu-sed/libexec/gnubin:$PATH"
+  fi
 
   # Use OpenSSL instead of macOS LibreSSL.
-  [[ -d "$brew_prefix/opt/openssl/bin" ]] && export PATH="$brew_prefix/opt/openssl/bin:$PATH"
+  if [ -d "$brew_prefix/opt/openssl/bin" ]; then
+    export PATH="$brew_prefix/opt/openssl/bin:$PATH"
+  fi
 
   unset brew_prefix
 fi

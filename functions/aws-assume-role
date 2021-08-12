@@ -19,34 +19,42 @@ unset AWS_SESSION_TOKEN
 local aws_mfa_profile=$AWS_MFA_PROFILE
 local aws_role_arn=$AWS_ROLE_ARN
 
-if [[ ! -z "$AWS_PROFILE" ]]; then
+if [[ ! -z "$AWS_PROFILE" ]]
+then
   echo "Using AWS_PROFILE $AWS_PROFILE"
-  if [[ -z "$aws_mfa_profile" ]]; then
+  if [[ -z "$aws_mfa_profile" ]]
+  then
     aws_mfa_profile=$(aws configure get source_profile --profile $AWS_PROFILE)
-    if [[ ! -z "$aws_mfa_profile" ]]; then
+    if [[ ! -z "$aws_mfa_profile" ]]
+    then
       echo "Using source_profile $aws_mfa_profile (from $AWS_PROFILE) for MFA"
     fi
   fi
-  if [[ -z "$aws_role_arn" ]]; then
+  if [[ -z "$aws_role_arn" ]]
+  then
     aws_role_arn=$(aws configure get role_arn --profile $AWS_PROFILE)
-    if [[ ! -z "$aws_role_arn" ]]; then
+    if [[ ! -z "$aws_role_arn" ]]
+    then
       echo "Using role_arn $aws_role_arn (from $AWS_PROFILE)"
     fi
   fi
 fi
 
-if [[ -z "$aws_mfa_profile" ]]; then
+if [[ -z "$aws_mfa_profile" ]]
+then
   echo "Missing aws_mfa_profile or source_profile in AWS profile"
   return 1
 fi
 
-if [[ -z "$aws_role_arn" ]]; then
+if [[ -z "$aws_role_arn" ]]
+then
   echo "Missing aws_role_arn or role_arn in AWS profile"
   return 1
 fi
 
 local mfa_serial=$(aws --profile $aws_mfa_profile iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
-if [[ -z "$mfa_serial" ]]; then
+if [[ -z "$mfa_serial" ]]
+then
   echo "Missing AWS user"
   return 1
 fi
@@ -57,7 +65,8 @@ local token_code=$(ykman oath accounts code "$mfa_serial" -s)
 local aws_role_session_name=${AWS_ROLE_SESSION_NAME:-cli}
 
 json=$(AWS_PROFILE="$aws_mfa_profile" aws sts assume-role --role-arn "$aws_role_arn" --role-session-name "$aws_role_session_name" --serial-number "$mfa_serial" --token-code "$token_code" --duration-seconds 7200)
-if [[ $? != 0 ]]; then
+if [[ $? != 0 ]]
+then
   echo "Could not assume role"
   return 1
 fi

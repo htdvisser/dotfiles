@@ -8,8 +8,7 @@ allowed_shell() {
 }
 
 find_zsh() {
-  if command_exists zsh && allowed_shell "$(which zsh)"
-  then
+  if command_exists zsh && allowed_shell "$(which zsh)"; then
     which zsh
   else
     echo "/bin/zsh"
