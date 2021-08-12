@@ -4,7 +4,7 @@ BREW=${BREW:-no}
 SYSTEM=${SYSTEM:-no}
 
 allowed_shell() {
-  grep "$1" /etc/shells > /dev/null 2>&1
+  grep "$1" /etc/shells >/dev/null 2>&1
 }
 
 find_zsh() {
@@ -20,6 +20,7 @@ change_shell() {
     info "Shell is already $SHELL"
     return
   fi
+
   if ! command_exists chsh; then
     warn "chsh is missing; can't change shell to zsh"
     return
@@ -29,6 +30,7 @@ change_shell() {
     error "Failed to change shell to zsh"
     return
   fi
+
   export SHELL="$zsh"
   success "Changed shell to zsh"
 }
@@ -53,62 +55,29 @@ install_others() {
 main() {
   export DOTFILES=$(dirname $(readlink -f "$0"))
   . "$DOTFILES/util.sh"
+
   if [ "$DOTFILES" != "$HOME/dotfiles" ]; then
     create_link "$DOTFILES" "$HOME/dotfiles"
     export DOTFILES="$HOME/dotfiles"
   fi
 
-  while [ $# -gt 0 ]; do
-    case $1 in
-      --brew) BREW=min ;;
-      --brew-full) BREW=full ;;
-      --system) SYSTEM=yes ;;
-    esac
-    shift
-  done
+  local operating_system="$(uname -s)"
 
-  if [ "$SYSTEM" = "yes" ]; then
-    if [ "$(uname -s)" = "Darwin" ]; then
-      "$DOTFILES/system/setup-macos.sh"
-    else
-      "$DOTFILES/system/setup-linux.sh"
-    fi
+  if [ "$operating_system" = "Darwin" ]; then
+    "$DOTFILES/system/install-macos.sh"
+  elif [ "$operating_system" = "Linux" ]; then
+    "$DOTFILES/system/install-linux.sh"
+  else
+    fatal "Unsupported Operating System: $operating_system"
   fi
 
-  if [ "$BREW" != "no" ]; then
-    if ! command_exists brew; then
-      info "installing Homebrew"
-      bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-      if [ "$(uname -s)" = "Linux" ]; then
-        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-      fi
-    fi
-    info "updating Homebrew"
-    brew update
-    brew upgrade
-    if [ "$(uname -s)" = "Darwin" ]; then
-      brew cask upgrade
-    fi
-    info "installing Homebrew bundles"
-    brew bundle --file="$DOTFILES/brew/Brewfile-min"
-    if [ "$(uname -s)" = "Darwin" ]; then
-      brew bundle --file="$DOTFILES/brew/Brewfile-min-macos"
-    else
-      brew bundle --file="$DOTFILES/brew/Brewfile-min-linux"
-    fi
-    if [ "$BREW" = "full" ]; then
-      brew bundle --file="$DOTFILES/brew/Brewfile-full"
-      if [ "$(uname -s)" = "Darwin" ]; then
-        brew bundle --file="$DOTFILES/brew/Brewfile-full-macos"
-      else
-        brew bundle --file="$DOTFILES/brew/Brewfile-full-linux"
-      fi
-    fi
-    brew cleanup
+  if [ "$operating_system" = "Darwin" ]; then
+    "$DOTFILES/system/configure-macos.sh"
+  elif [ "$operating_system" = "Linux" ]; then
+    "$DOTFILES/system/configure-linux.sh"
+  else
+    fatal "Unsupported Operating System: $operating_system"
   fi
-
-  require_command zsh
-  require_command curl
 
   install_dotfiles
 
@@ -120,3 +89,5 @@ main() {
 }
 
 main "$@"
+
+exec $SHELL

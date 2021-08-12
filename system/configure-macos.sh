@@ -3,20 +3,15 @@
 dotpath=$(dirname $(readlink -f "$0"))
 . "$dotpath/../util.sh"
 
-info "installing macOS system"
+info "configuring macOS system"
 
-sudo tee /etc/paths <<EOF
-/opt/homebrew/bin
-/opt/homebrew/sbin
-/usr/local/bin
-/usr/local/sbin
-/usr/bin
-/usr/sbin
-/bin
-/sbin
-EOF
+architecture=$(uname -p)
 
-sudo launchctl config user path "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+if [ "$architecture" = "arm64" ]; then
+  sudo launchctl config user path "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+else
+  sudo launchctl config user path "/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+fi
 
 # Global
 
@@ -118,7 +113,7 @@ defaults write com.apple.ActivityMonitor UpdatePeriod -int 2
 
 # Safari
 
-defaults write -g NSPreferredWebServices '{NSWebServicesProviderWebSearch = { NSDefaultDisplayName = DuckDuckGo; NSProviderIdentifier = "com.duckduckgo"; }; }';
+defaults write -g NSPreferredWebServices '{NSWebServicesProviderWebSearch = { NSDefaultDisplayName = DuckDuckGo; NSProviderIdentifier = "com.duckduckgo"; }; }'
 
 # Files on Disks
 
@@ -158,14 +153,16 @@ tm_exclude "/System/Applications"
 tm_exclude "/System/Library"
 tm_exclude "/usr"
 tm_exclude "/usr/local"
+
+tm_exclude "$HOME/.Trash"
 tm_exclude "$HOME/.cache"
 tm_exclude "$HOME/.cargo"
 tm_exclude "$HOME/.ipfs"
 tm_exclude "$HOME/.magefile"
 tm_exclude "$HOME/.rustup"
-tm_exclude "$HOME/.Trash"
 tm_exclude "$HOME/.vagrant.d"
 tm_exclude "$HOME/.vscode"
+tm_exclude "$HOME/.vscode-insiders"
 tm_exclude "$HOME/Applications"
 tm_exclude "$HOME/bin"
 tm_exclude "$HOME/Downloads"
@@ -184,10 +181,9 @@ tm_exclude "$HOME/Library/Fonts"
 tm_exclude "$HOME/Library/Logs"
 tm_exclude "$HOME/Library/PlayOnMac"
 tm_exclude "$HOME/OneDrive"
-tm_exclude "$HOME/Pictures"
 tm_exclude "$HOME/sdk"
 tm_exclude "$HOME/Sync"
 tm_exclude "$HOME/tmp"
 tm_exclude "$HOME/VirtualBox VMs"
 
-success "installed macOS system"
+success "configured macOS system"
