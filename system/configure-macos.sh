@@ -3,7 +3,7 @@
 dotpath=$(dirname $(readlink -f "$0"))
 . "$dotpath/../util.sh"
 
-info "configuring macOS system"
+info "Configuring macOS system..."
 
 architecture=$(uname -p)
 
@@ -130,10 +130,10 @@ tm_exclude() {
     mkdir -p "$1"
   fi
   if [ "$(tmutil isexcluded "$1" | grep -oE '\[Excluded\]')" = '[Excluded]' ]; then
-    info "path $1 already excluded from Time Machine"
+    info "Path $1 already excluded from Time Machine"
     return
   fi
-  info "exclude $1 from Time Machine"
+  info "Excluding $1 from Time Machine"
   sudo tmutil addexclusion -p "$1"
 }
 
@@ -186,4 +186,4 @@ tm_exclude "$HOME/Sync"
 tm_exclude "$HOME/tmp"
 tm_exclude "$HOME/VirtualBox VMs"
 
-success "configured macOS system"
+success "Configured macOS system"

@@ -3,8 +3,8 @@
 dotpath=$(dirname $(readlink -f "$0"))
 . "$dotpath/../util.sh"
 
-info "configuring Linux system"
+info "Configuring Linux system..."
 
 # TODO: configure stuff.
 
-success "configured Linux system"
+success "Configured Linux system"

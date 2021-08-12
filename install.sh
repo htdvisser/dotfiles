@@ -35,19 +35,20 @@ change_shell() {
   success "Changed shell to zsh"
 }
 
-install_dotfiles() {
-  info 'installing dotfiles'
+link_dotfiles() {
+  info "Linking dotfiles..."
   find -L "$DOTFILES" -maxdepth 3 -name '*.symlink' -not -path '*.git*' |
     while read -r src; do
       dst="$HOME/.$(basename "${src%.*}")"
       create_link "$src" "$dst"
     done
+  info "Linked dotfiles"
 }
 
 install_others() {
   find -L "$DOTFILES" -mindepth 2 -maxdepth 3 -name 'install.sh' -not -path '*.git*' |
     while read -r installer; do
-      info "running ${installer}..."
+      info "Running ${installer}..."
       $installer
     done
 }
@@ -79,13 +80,13 @@ main() {
     fatal "Unsupported Operating System: $operating_system"
   fi
 
-  install_dotfiles
+  link_dotfiles
 
   install_others
 
   change_shell
 
-  info "all done"
+  info "All done"
 }
 
 main "$@"
