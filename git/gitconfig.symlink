@@ -2,7 +2,6 @@
   compression = -1
   editor = vim
   excludesfile = ~/.gitignore
-  pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   co = checkout
   s = status
@@ -17,8 +16,6 @@
 [commit]
   cleanup = strip
   gpgSign = true
-[credential]
-  helper = osxkeychain
 [url "https://github.com/"]
 	insteadOf = git@github.com:
 [url "https://gist.github.com/"]
