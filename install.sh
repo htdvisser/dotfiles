@@ -26,7 +26,13 @@ change_shell() {
     return
   fi
   zsh=$(find_zsh)
-  if ! chsh -s "$zsh"; then
+
+  maybe_sudo=""
+  if command_exists sudo; then
+    maybe_sudo="sudo"
+  fi
+
+  if ! $maybe_sudo chsh -s "$zsh" "$(whoami)"; then
     error "Failed to change shell to zsh"
     return
   fi
