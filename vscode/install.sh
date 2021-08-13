@@ -25,7 +25,7 @@ create_link "$dotpath/snippets" "$code_user_dir/snippets"
 create_link "$dotpath/settings.json" "$code_insiders_user_dir/settings.json"
 create_link "$dotpath/snippets" "$code_insiders_user_dir/snippets"
 
-if command_exists code; then
+if command_exists code && [ "$CODESPACES" != "true" ]; then
   # Install extensions from `code --list-extensions`
   modules="
     2gua.rainbow-brackets
