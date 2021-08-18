@@ -1,4 +1,6 @@
-export GOPATH="$HOME/go"
+if [ -z "$GOPATH" ]; then
+  export GOPATH="$HOME/go"
+fi
 
 # go_sdk=go1.xx.x
 
