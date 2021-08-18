@@ -96,5 +96,3 @@ main() {
 }
 
 main "$@"
-
-exec $SHELL
