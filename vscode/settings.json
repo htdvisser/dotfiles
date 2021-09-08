@@ -4,6 +4,7 @@
   "debug.console.fontFamily": "Iosevka Term",
   "debug.console.fontSize": 15,
 
+  "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "solid",
   "editor.cursorStyle": "line",
   "editor.detectIndentation": false,
