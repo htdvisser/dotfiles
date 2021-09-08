@@ -168,3 +168,5 @@ temp/
 .history
 
 # End of https://www.gitignore.io/api/macos,go,node,visualstudiocode
+
+.envrc
