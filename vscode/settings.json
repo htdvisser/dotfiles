@@ -19,6 +19,7 @@
   "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
+  "editor.suggest.preview": true,
   "editor.trimAutoWhitespace": true,
 
   "extensions.autoUpdate": true,
