@@ -20,6 +20,11 @@ brew "openssh"
 brew "syncthing", restart_service: true
 mas "OneDrive", id: 823766827
 
+# Reading
+
+mas "Notability", id: 360593530
+cask "netnewswire"
+
 # Communication
 
 mas "WhatsApp", id: 1147396723
@@ -30,14 +35,14 @@ mas "Telegram", id: 747648890
 # Security
 
 brew "yubikey-agent"
-mas "1Password", id: 1333542190
-mas "WireGuard", id: 1451685025
+mas "Tailscale", id: 1475387142
+cask "1password"
 cask "keybase"
 cask "secretive"
 
 # Internet
 
-cask "firefox-developer-edition"
+cask "firefox"
 
 # Development
 
