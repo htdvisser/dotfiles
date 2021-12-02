@@ -79,9 +79,8 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeS
 
 # Keyboard
 
-defaults write -g AppleKeyboardUIMode -int 3
 defaults write -g InitialKeyRepeat -int 25
-defaults write -g KeyRepeat -int 2
+defaults write -g KeyRepeat -int 1
 defaults write -g NSAutomaticCapitalizationEnabled -bool no
 defaults write -g NSAutomaticDashSubstitutionEnabled -bool no
 defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool no
