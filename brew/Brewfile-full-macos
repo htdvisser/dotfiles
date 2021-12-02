@@ -11,30 +11,20 @@ cask "skype"
 # Security
 
 cask "viscosity"
+cask "protonvpn"
 
 # Internet
 
-cask "chromium"
-cask "google-chrome"
+cask "brave-browser"
 
 # Development
 
 brew "hexyl"
-brew "packer"
 brew "xo/xo/usql"
-cask "pgadmin4"
-cask "vagrant"
-cask "virtualbox"
-cask "virtualbox-extension-pack"
 
 # Cloud
 
-brew "azure-cli"
 brew "cfn-lint"
-brew "firebase-cli"
-brew "hcloud"
-cask "google-cloud-sdk"
-cask "microsoft-azure-storage-explorer"
 
 # Utilities
 
@@ -80,3 +70,5 @@ mas "Microsoft OneNote", id: 784801555
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Affinity Publisher", id: 881418622
+
+mas "Xcode", id: 497799835
