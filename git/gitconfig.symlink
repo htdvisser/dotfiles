@@ -17,11 +17,11 @@
   cleanup = strip
   gpgSign = true
 [url "https://github.com/"]
-	insteadOf = git@github.com:
+  insteadOf = git@github.com:
 [url "https://gist.github.com/"]
-	insteadOf = git@gist.github.com:
+  insteadOf = git@gist.github.com:
 [url "https://gitlab.com/"]
-	insteadOf = git@gitlab.com:
+  insteadOf = git@gitlab.com:
 [diff]
   guitool = vscode
   algorithm = histogram
@@ -83,4 +83,11 @@
 [include]
   path = ~/.gitconfig.local
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
+[includeIf "gitdir:~/projects/ttn/"]
+  path = ~/.gitconfig.tti
+[includeIf "gitdir:~/projects/tti/"]
+  path = ~/.gitconfig.tti
+[includeIf "gitdir:~/projects/packetbroker/"]
+  path = ~/.gitconfig.tti
