@@ -13,10 +13,6 @@ load_plugin zsh-history-substring-search
 
 unset load_plugin
 
-if command -v direnv >/dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
-fi
-
 typeset -U config_files
 config_files=($DOTFILES/*/*.zsh)
 
