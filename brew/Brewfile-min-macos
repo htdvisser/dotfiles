@@ -37,7 +37,6 @@ mas "Telegram", id: 747648890
 brew "yubikey-agent"
 mas "Tailscale", id: 1475387142
 cask "1password"
-cask "keybase"
 cask "secretive"
 
 # Internet
