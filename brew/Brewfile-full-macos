@@ -13,10 +13,6 @@ cask "skype"
 cask "viscosity"
 cask "protonvpn"
 
-# Internet
-
-cask "brave-browser"
-
 # Development
 
 brew "hexyl"
