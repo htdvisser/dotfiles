@@ -12,6 +12,14 @@
 #
 #   aws-assume-role
 
+local old_AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+local old_AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+local old_AWS_SESSION_TOKEN="$AWS_SESSION_TOKEN"
+if [[ ! -z "$AWS_SESSION_TOKEN" ]]
+then
+  local old_aws_identity=$(aws sts get-caller-identity --query Arn --output text)
+fi
+
 unset AWS_ACCESS_KEY_ID
 unset AWS_SECRET_ACCESS_KEY
 unset AWS_SESSION_TOKEN
@@ -52,6 +60,19 @@ then
   return 1
 fi
 
+local aws_role_session_name=${AWS_ROLE_SESSION_NAME:-cli}
+
+local expected_assumed_identity="$(sed -e 's|:iam:|:sts:|' -e 's|:role/|:assumed-role/|' <<< $aws_role_arn)/$aws_role_session_name"
+
+if [[ "$expected_assumed_identity" = "$old_aws_identity" ]]
+then
+  echo "Already assumed role $aws_role_arn"
+  export AWS_ACCESS_KEY_ID="$old_AWS_ACCESS_KEY_ID"
+  export AWS_SECRET_ACCESS_KEY="$old_AWS_SECRET_ACCESS_KEY"
+  export AWS_SESSION_TOKEN="$old_AWS_SESSION_TOKEN"
+  return 0
+fi
+
 local mfa_serial=$(aws --profile $aws_mfa_profile iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
 if [[ -z "$mfa_serial" ]]
 then
@@ -61,8 +82,6 @@ fi
 echo "Using MFA device $mfa_serial"
 
 local token_code=$(ykman oath accounts code "$mfa_serial" -s)
-
-local aws_role_session_name=${AWS_ROLE_SESSION_NAME:-cli}
 
 json=$(AWS_PROFILE="$aws_mfa_profile" aws sts assume-role --role-arn "$aws_role_arn" --role-session-name "$aws_role_session_name" --serial-number "$mfa_serial" --token-code "$token_code" --duration-seconds 7200)
 if [[ $? != 0 ]]
