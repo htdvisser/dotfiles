@@ -12,7 +12,7 @@ fi
 
 architecture=$(uname -p)
 
-if [ "$architecture" = "arm64" ]; then
+if [ "$architecture" = "arm" -o "$architecture" = "arm64" ]; then
 
   sudo tee /etc/paths <<EOF
 /opt/homebrew/bin
