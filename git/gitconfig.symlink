@@ -3,6 +3,7 @@
   editor = vim
   excludesfile = ~/.gitignore
 [alias]
+  b = branch --show-current
   co = checkout
   s = status
 [blame]
