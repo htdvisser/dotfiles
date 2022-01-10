@@ -5,8 +5,8 @@ tap "homebrew/services"
 
 # Prerequisites
 
+brew "java"
 brew "mas"
-cask "java"
 cask "xquartz"
 
 # GNU tools
