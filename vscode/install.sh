@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
-dotpath=$(dirname $(readlink -f "$0"))
-. "$dotpath/../util.sh"
+. "$DOTFILES/util.sh"
 
 if [ "$(uname -s)" = "Darwin" ]; then
   code_user_dir="$HOME/Library/Application Support/Code/User"
@@ -19,11 +18,11 @@ if [ ! -d "$code_insiders_user_dir" ]; then
   mkdir -p "$code_insiders_user_dir"
 fi
 
-create_link "$dotpath/settings.json" "$code_user_dir/settings.json"
-create_link "$dotpath/snippets" "$code_user_dir/snippets"
+create_link "$DOTFILES/vscode/settings.json" "$code_user_dir/settings.json"
+create_link "$DOTFILES/vscode/snippets" "$code_user_dir/snippets"
 
-create_link "$dotpath/settings.json" "$code_insiders_user_dir/settings.json"
-create_link "$dotpath/snippets" "$code_insiders_user_dir/snippets"
+create_link "$DOTFILES/vscode/settings.json" "$code_insiders_user_dir/settings.json"
+create_link "$DOTFILES/vscode/snippets" "$code_insiders_user_dir/snippets"
 
 if command_exists code && [ "$CODESPACES" != "true" ]; then
   # Install extensions from `code --list-extensions`

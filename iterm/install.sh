@@ -1,12 +1,11 @@
 #!/usr/bin/env sh
 
-dotpath=$(dirname $(readlink -f "$0"))
-. "$dotpath/../util.sh"
+. "$DOTFILES/util.sh"
 
-if [ -e "$dotpath/integration.zsh" ]; then
+if [ -e "$DOTFILES/iterm/integration.zsh" ]; then
   success "iTerm integration already installed"
 else
   info "Downloading iTerm integration..."
-  curl -sSL https://iterm2.com/shell_integration/zsh -o "$dotpath/integration.zsh"
+  curl -sSL https://iterm2.com/shell_integration/zsh -o "$DOTFILES/iterm/integration.zsh"
   info "Downloaded iTerm integration"
 fi

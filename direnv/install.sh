@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-dotpath=$(dirname $(readlink -f "$0"))
-. "$dotpath/../util.sh"
+. "$DOTFILES/util.sh"
 
-create_link "$dotpath/lib" "$HOME/.config/direnv/lib"
+create_link "$DOTFILES/direnv/lib" "$HOME/.config/direnv/lib"

@@ -60,13 +60,8 @@ install_others() {
 }
 
 main() {
-  export DOTFILES=$(dirname $(readlink -f "$0"))
+  export DOTFILES="$HOME/dotfiles"
   . "$DOTFILES/util.sh"
-
-  if [ "$DOTFILES" != "$HOME/dotfiles" ]; then
-    create_link "$DOTFILES" "$HOME/dotfiles"
-    export DOTFILES="$HOME/dotfiles"
-  fi
 
   local operating_system="$(uname -s)"
 
