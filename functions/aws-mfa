@@ -1,0 +1,39 @@
+if [[ -z "$1" ]]; then
+  echo "Usage: aws-mfa [PROFILE]"
+  return 1
+fi
+
+mfa_profile="$1-mfa"
+source_profile=$(aws configure get source_profile --profile "$mfa_profile")
+
+if [[ -z "$source_profile" ]]
+then
+  source_profile="$1"
+fi
+
+local mfa_serial=$(aws --profile $source_profile iam get-user | jq -r '.User.Arn' | sed -e 's|:user/|:mfa/|')
+if [[ -z "$mfa_serial" ]]
+then
+  echo "Missing AWS user"
+  return 1
+fi
+echo "Using MFA device $mfa_serial"
+
+local op_id=$(aws configure --profile $source_profile get op_id)
+if [[ ! -z "$op_id" ]]
+then
+  local token_code=$(op item get $op_id --otp)
+else
+  local token_code=$(ykman oath accounts code "$mfa_serial" -s)
+fi
+
+json=$(aws --profile $source_profile sts get-session-token --serial-number "$mfa_serial" --token-code "$token_code" --duration-seconds 43200)
+if [[ $? != 0 ]]
+then
+  echo "Could not get session token"
+  return 1
+fi
+
+aws configure set --profile $mfa_profile aws_access_key_id $(echo $json | jq -r .Credentials.AccessKeyId)
+aws configure set --profile $mfa_profile aws_secret_access_key $(echo $json | jq -r .Credentials.SecretAccessKey)
+aws configure set --profile $mfa_profile aws_session_token $(echo $json | jq -r .Credentials.SessionToken)
