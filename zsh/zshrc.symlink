@@ -1,7 +1,7 @@
 export DOTFILES="$HOME/dotfiles"
 export PROJECTS="$HOME/projects"
 
-fpath=("$DOTFILES/zsh/plugins/zsh-completions/src" $fpath)
+fpath=("$DOTFILES/zsh/plugins/zsh-completions/src" "$(brew --prefix)/share/zsh/site-functions" "$(brew --prefix)/share/zsh/functions")
 
 load_plugin() {
   source "$DOTFILES/zsh/plugins/$1/$1.zsh"

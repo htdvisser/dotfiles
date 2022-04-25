@@ -19,4 +19,4 @@ install_plugin zsh-completions
 install_plugin zsh-syntax-highlighting
 install_plugin zsh-history-substring-search
 
-# sudo chmod go-w /usr/local/share/zsh
+# sudo chmod go-w $(brew --prefix)/share/zsh
