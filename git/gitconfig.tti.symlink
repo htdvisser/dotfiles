@@ -1,2 +1,6 @@
+[gpg]
+	format = openpgp
+
 [user]
-  email = hylke@thethingsindustries.com
+	email = hylke@thethingsindustries.com
+	signingkey = 0x90FD5BB639B8A782!
