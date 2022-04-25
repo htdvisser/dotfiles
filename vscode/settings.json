@@ -27,7 +27,7 @@
 
   "files.associations": {
     ".envrc": "shellscript",
-    "*.html.tmpl": "gohtml"
+    ".html.tmpl": "gohtml"
   },
   "files.autoSave": "off",
   "files.exclude": {
