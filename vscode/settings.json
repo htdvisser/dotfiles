@@ -68,9 +68,10 @@
     "formatting.gofumpt": true,
     "ui.completion.usePlaceholders": true,
     "ui.diagnostic.analyses": {
-      "fieldalignment": true,
+      "nilness": true,
       "shadow": true,
-      "unusedparams": true
+      "unusedparams": true,
+      "unusedwrite": true
     }
   },
 
