@@ -60,8 +60,7 @@
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
-  "go.lintFlags": ["-config", "/Users/htdvisser/.revive.toml"],
-  "go.lintTool": "revive",
+  "go.lintTool": "staticcheck",
   "go.toolsManagement.autoUpdate": true,
 
   "gopls": {
