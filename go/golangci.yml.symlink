@@ -1,0 +1,114 @@
+run:
+  skip-files:
+    - ".*\\.pb\\.go"
+    - ".*\\.gen\\.go"
+
+output:
+  sort-results: true
+  uniq-by-line: false
+
+linters:
+  disable-all: true
+  enable:
+    # Enabled by default:
+    - deadcode
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - structcheck
+    - typecheck
+    - unused
+    - varcheck
+
+    # Enabled manually:
+    - asciicheck
+    - bodyclose
+    - dogsled
+    - errorlint
+    - exportloopref
+    - gochecknoinits
+    - goconst
+    - gocyclo
+    - gocritic
+    - godot
+    - gofumpt
+    - goimports
+    - goprintffuncname
+    - gosec
+    - makezero
+    - misspell
+    - nakedret
+    - nilnil
+    - paralleltest
+    - prealloc
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - stylecheck
+    - tenv
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+
+linters-settings:
+  goconst:
+    min-len: 5
+    min-occurrences: 5
+
+  gocyclo:
+    min-complexity: 10
+
+  godot:
+    capital: true
+    period: true
+
+  gofumpt:
+    lang-version: "1.17"
+
+  gosec:
+    exclude-generated: true
+
+  gosimple:
+    go: "1.17"
+
+  nakedret:
+    max-func-lines: 20
+
+  revive:
+    enable-all-rules: true
+    rules:
+      - { name: add-constant, disabled: true }
+      - { name: argument-limit, arguments: [4] }
+      - { name: bare-return, disabled: true } # checked by nakedret
+      - { name: banned-characters, disabled: true }
+      - { name: cognitive-complexity, disabled: true }
+      - { name: confusing-naming, disabled: true }
+      - { name: cyclomatic, disabled: true } # checked by gocyclo
+      - { name: file-header, disabled: true }
+      - { name: flag-parameter, disabled: true }
+      - { name: function-length, disabled: true }
+      - { name: function-result-limit, arguments: [3] }
+      - { name: line-length-limit, arguments: [200] }
+      - { name: max-public-structs, disabled: true }
+      - { name: nested-structs, disabled: true }
+      - { name: unhandled-error, disabled: true } # checked by errcheck
+
+  staticcheck:
+    go: "1.17"
+
+  stylecheck:
+    go: "1.17"
+    checks:
+      - all
+
+issues:
+  include:
+    - EXC0002 # golint: comments on exported things
+    - EXC0005 # staticcheck: unnecessary "break" in "switch"
+    - EXC0011 # stylecheck: comments on exported things
+    - EXC0012 # revive: comments on exported things
+    - EXC0013 # revive: package comments starting with package name
+    - EXC0014 # revive: exported thing comment starting with exported thing

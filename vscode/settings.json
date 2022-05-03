@@ -60,7 +60,7 @@
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true
   },
-  "go.lintTool": "staticcheck",
+  "go.lintTool": "golangci-lint",
   "go.toolsManagement.autoUpdate": true,
 
   "gopls": {
