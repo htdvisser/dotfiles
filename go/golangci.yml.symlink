@@ -91,7 +91,7 @@ linters-settings:
       - { name: flag-parameter, disabled: true }
       - { name: function-length, disabled: true }
       - { name: function-result-limit, arguments: [3] }
-      - { name: line-length-limit, arguments: [200] }
+      - { name: line-length-limit, arguments: [120] }
       - { name: max-public-structs, disabled: true }
       - { name: nested-structs, disabled: true }
       - { name: unhandled-error, disabled: true } # checked by errcheck
