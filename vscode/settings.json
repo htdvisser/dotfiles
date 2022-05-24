@@ -20,6 +20,7 @@
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
   "editor.suggest.preview": true,
+  "editor.tabSize": 2,
   "editor.trimAutoWhitespace": true,
 
   "extensions.autoUpdate": true,
