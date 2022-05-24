@@ -71,7 +71,8 @@
       "nilness": true,
       "shadow": true,
       "unusedparams": true,
-      "unusedwrite": true
+      "unusedwrite": true,
+      "useany": true
     }
   },
 
