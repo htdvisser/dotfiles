@@ -13,6 +13,7 @@
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
   "editor.formatOnSave": false,
+  "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "interval",
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "ctrlCmd",
@@ -44,6 +45,10 @@
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.scrollback": 10000,
 
+  "git.mergeEditor": true,
+
+  "githubPullRequests.pullBranch": "never",
+
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
 
@@ -70,7 +75,6 @@
     "ui.completion.usePlaceholders": true,
     "ui.diagnostic.analyses": {
       "nilness": true,
-      "shadow": true,
       "unusedparams": true,
       "unusedwrite": true,
       "useany": true
