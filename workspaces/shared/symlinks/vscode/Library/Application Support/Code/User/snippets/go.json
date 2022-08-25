@@ -1,0 +1,49 @@
+{
+  "Options": {
+    "prefix": "optionsp",
+    "body": [
+      "type Option interface {",
+      "\tapplyTo(*options)",
+      "}",
+      "",
+      "type optionFunc func(*options)",
+      "",
+      "func (f optionFunc) applyTo(opts *options) {",
+      "\tf.applyTo(opts)",
+      "}",
+      "",
+      "type options struct{}",
+      "",
+      "func (o *options) apply(opts ...Option) {",
+      "\tfor _, opt := range opts {",
+      "\t\topt.applyTo(o)",
+      "\t}",
+      "}",
+      "",
+      "func defaultOptions() *options {",
+      "\treturn &options{}",
+      "}"
+    ],
+    "description": "Options pattern"
+  },
+  "Context Key Value": {
+    "prefix": "ctxkv",
+    "body": [
+      "type ctxKeyType struct{}",
+      "",
+      "var ctxKey ctxKeyType",
+      "",
+      "type ctxValue struct{}",
+      "",
+      "func fromContext(ctx context.Context) (*ctxValue, bool) {",
+      "\tvalue, ok := ctx.Value(ctxKey).(*ctxValue)",
+      "\treturn value, ok",
+      "}",
+      "",
+      "func newContext(parent context.Context, value *ctxValue) context.Context {",
+      "\treturn context.WithValue(parent, ctxKey, value)",
+      "}"
+    ],
+    "description": "Context Key Value"
+  }
+}

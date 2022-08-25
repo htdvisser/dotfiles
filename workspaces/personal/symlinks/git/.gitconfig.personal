@@ -1,0 +1,3 @@
+[user]
+  email = hi@htdvisser.dev
+  signingkey = ~/.ssh/htdvisser_ed25519.pub

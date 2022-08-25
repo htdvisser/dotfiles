@@ -1,0 +1,157 @@
+{
+  "cSpell.language": "en,nl",
+
+  "debug.console.fontFamily": "Iosevka Term",
+  "debug.console.fontSize": 15,
+
+  "editor.bracketPairColorization.enabled": true,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "line",
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "Iosevka",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.fontWeight": "400",
+  "editor.formatOnSave": false,
+  "editor.lineNumbers": "interval",
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [80, 120],
+  "editor.suggest.preview": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+
+  "extensions.autoUpdate": true,
+  "extensions.ignoreRecommendations": true,
+
+  "files.associations": {
+    ".envrc": "shellscript",
+    ".html.tmpl": "gohtml"
+  },
+  "files.autoSave": "off",
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/node_modules/": true
+  },
+  "files.insertFinalNewline": true,
+
+  "terminal.integrated.fontFamily": "Iosevka Term",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.scrollback": 10000,
+
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+
+  "go.addTags": {
+    "tags": "json,yaml",
+    "options": "json=omitempty,yaml=omitempty",
+    "transform": "camelcase"
+  },
+  "go.buildOnSave": "package",
+  "go.coverageDecorator": {
+    "coveredGutterStyle": "blockgreen",
+    "type": "gutter",
+    "uncoveredGutterStyle": "blockred"
+  },
+  "go.languageServerExperimentalFeatures": {
+    "diagnostics": true
+  },
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
+  "go.toolsManagement.autoUpdate": true,
+
+  "gopls": {
+    "formatting.gofumpt": true,
+    "ui.completion.usePlaceholders": true,
+    "ui.diagnostic.analyses": {
+      "nilness": true,
+      "shadow": true,
+      "unusedparams": true,
+      "unusedwrite": true,
+      "useany": true
+    }
+  },
+
+  "protoc": {
+    "options": [
+      "--proto_path=${workspaceFolder}/api",
+      "--proto_path=${workspaceFolder}/api/third_party"
+    ]
+  },
+  "terminal.external.osxExec": "iTerm.app",
+
+  "window.autoDetectColorScheme": true,
+  "workbench.activityBar.visible": true,
+  "workbench.colorTheme": "GitHub Light",
+  "workbench.editor.untitled.hint": "hidden",
+  "workbench.preferredDarkColorTheme": "GitHub Dark",
+  "workbench.preferredLightColorTheme": "GitHub Light",
+  "workbench.startupEditor": "none",
+
+  // Language-specific options:
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[rust]": {
+    "editor.formatOnSave": true
+  },
+  "[terraform]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": false,
+    "plaintext": false,
+    "yaml": false
+  }
+}

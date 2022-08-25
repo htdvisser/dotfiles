@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [[ -z "$1" ]]
+then
+    echo "Usage: tmst [timestamp]"
+    exit 0
+fi
+
+if [[ $(bc <<< "$1 > 1000000000000000000") == "1" ]]
+then
+  unix=$(bc <<< "$1 / 1000000000")
+elif [[ $(bc <<< "$1 > 1000000000000000") == "1" ]]
+then
+  unix=$(bc <<< "$1 / 1000000")
+elif [[ $(bc <<< "$1 > 1000000000000") == "1" ]]
+then
+  unix=$(bc <<< "$1 / 1000")
+else
+  unix=$1
+fi
+
+date -u -d "@$unix" "+%FT%T"
