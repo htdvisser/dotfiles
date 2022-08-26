@@ -1,0 +1,47 @@
+#!/usr/bin/env zsh
+
+zparseopts -D -E -K - \
+  '-profile'::=flags \
+  || return 1
+
+local profile="mfa"
+
+if [[ ! -z "$flags" ]]; then
+  for flag val in "${(@)flags}"; do
+    case $flag in
+
+    --profile)
+      profile=$val
+    ;;
+
+    esac
+  done
+fi
+
+local source_profile=$(aws configure get source_profile --profile "$profile")
+if [[ $? != 0 || -z "$source_profile" ]]; then
+  echo "Could not get source profile from AWS config"
+  return 1
+fi
+
+local op_item_id=$(aws configure get op_item_id --profile "$source_profile")
+if [[ $? != 0 || -z "$op_item_id" ]]; then
+  echo "Could not get 1Password item ID from AWS config"
+  return 1
+fi
+
+local mfa_serial=$(aws configure get mfa_serial --profile "$profile")
+if [[ $? != 0 || -z "$mfa_serial" ]]; then
+  echo "Could not get MFA serial from AWS config"
+  return 1
+fi
+
+credentials_json=$(aws-credential-1password --op_item_id $op_item_id --mfa_serial $mfa_serial $@)
+if [[ $? != 0 || -z "$credentials_json" ]]; then
+  echo "Could not get credentials from 1Password"
+  return 1
+fi
+
+aws configure set --profile $profile aws_access_key_id $(echo $credentials_json | jq -r .AccessKeyId)
+aws configure set --profile $profile aws_secret_access_key $(echo $credentials_json | jq -r .SecretAccessKey)
+aws configure set --profile $profile aws_session_token $(echo $credentials_json | jq -r .SessionToken)
