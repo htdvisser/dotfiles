@@ -8,6 +8,7 @@ tap "xo/xo"
 # Prerequisites
 
 brew "mas"
+brew "stow"
 brew "duti"
 
 # GNU tools
