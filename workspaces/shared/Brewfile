@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "xo/xo"
 
@@ -52,7 +53,7 @@ brew "zsh"
 brew "direnv"
 cask "iterm2"
 
-brew "postgresql", restart_service: true
+brew "postgresql@14", restart_service: true
 brew "redis", restart_service: true
 brew "sqlite"
 brew "xo/xo/usql"
