@@ -23,6 +23,13 @@ for file in $(find "$ZSHRCD" -name '*_path.zsh' | sort); do
   source "$file"
 done
 
+# Load functions
+
+ZSHFUNCTIONSPATH=${ZSHFUNCTIONSPATH:-"$HOME/.zsh/functions"}
+fpath=("$ZSHFUNCTIONSPATH" $fpath)
+autoload -U "$ZSHFUNCTIONSPATH"/*(:t)
+unset ZSHFUNCTIONSPATH
+
 # Load zsh files that are not paths nor completion
 
 for file in $(find "$ZSHRCD" -name '*.zsh' -not -name '*_path.zsh' -not -name '*_completion.zsh' | sort); do
@@ -47,12 +54,6 @@ unset completion_updated_at
 for file in $(find "$ZSHRCD" -name '*_completion.zsh' | sort); do
   source "$file"
 done
-
-# Load functions
-
-ZSHFUNCTIONSPATH=${ZSHFUNCTIONSPATH:-"$HOME/.zsh/functions"}
-fpath=("$ZSHFUNCTIONSPATH" $fpath)
-autoload -U "$ZSHFUNCTIONSPATH"/*(:t)
 
 # Load local configuration
 
