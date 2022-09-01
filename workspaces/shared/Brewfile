@@ -76,7 +76,6 @@ brew "tmux"
 
 cask "docker"
 cask "visual-studio-code"
-mas "Xcode", id: 497799835
 
 # Cloud
 
@@ -109,3 +108,7 @@ mas "The Unarchiver", id: 425424353
 # Fonts
 
 cask "font-iosevka"
+
+# Xcode always takes a long time to install, so it's last
+
+mas "Xcode", id: 497799835
