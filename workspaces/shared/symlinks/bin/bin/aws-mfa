@@ -18,7 +18,7 @@ if [[ ! -z "$flags" ]]; then
   done
 fi
 
-local source_profile=$(aws configure get source_profile --profile "$profile")
+local source_profile=$(aws configure get x_mfa_source_profile --profile "$profile")
 if [[ $? != 0 || -z "$source_profile" ]]; then
   echo "Could not get source profile from AWS config"
   return 1
@@ -30,7 +30,7 @@ if [[ $? != 0 || -z "$op_item_id" ]]; then
   return 1
 fi
 
-local mfa_serial=$(aws configure get mfa_serial --profile "$profile")
+local mfa_serial=$(aws configure get x_mfa_serial --profile "$profile")
 if [[ $? != 0 || -z "$mfa_serial" ]]; then
   echo "Could not get MFA serial from AWS config"
   return 1
