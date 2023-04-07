@@ -28,9 +28,6 @@ set encoding=utf-8
 " Wrap long lines.
 set wrap
 
-" Line length above which to break a line.
-set textwidth=80
-
 " Number of spaces a <Tab> in the text stands for.
 set tabstop=2
 
