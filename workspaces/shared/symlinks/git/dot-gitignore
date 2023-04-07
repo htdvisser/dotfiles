@@ -25,6 +25,7 @@
 
 # Go workspace file
 go.work
+go.work.sum
 
 # --- Global/macOS.gitignore ---
 
@@ -34,7 +35,8 @@ go.work
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
