@@ -1,3 +1,6 @@
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
 [user]
   email = hi@htdvisser.dev
-  signingkey = ~/.ssh/htdvisser_ed25519.pub
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIBzSRfWV/K1mjgX/Kp9YWERCV2Gzv0A4DXziQNLvJAr
