@@ -84,7 +84,20 @@
 [init]
   defaultBranch = main
 
-[includeIf "gitdir:~/projects/personal/"]
+[includeIf "gitdir:~/projects/htdvisser/"]
   path = ~/.gitconfig.personal
-[includeIf "gitdir:~/projects/work/"]
+[includeIf "gitdir:~/projects/fork/"]
+  path = ~/.gitconfig.personal
+
+[includeIf "gitdir:~/projects/hylke.visser/"]
+  path = ~/.gitconfig.work
+[includeIf "gitdir:~/projects/1Password/"]
+  path = ~/.gitconfig.work
+[includeIf "gitdir:~/projects/b5/"]
+  path = ~/.gitconfig.work
+[includeIf "gitdir:~/projects/dev/"]
+  path = ~/.gitconfig.work
+[includeIf "gitdir:~/projects/infra/"]
+  path = ~/.gitconfig.work
+[includeIf "gitdir:~/projects/ops/"]
   path = ~/.gitconfig.work
