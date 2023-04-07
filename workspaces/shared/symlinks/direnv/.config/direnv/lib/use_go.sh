@@ -16,6 +16,5 @@ use_go() {
     return 1
   fi
 
-  export GOROOT="$HOME/sdk/go$1"
-  export PATH="$GOROOT/bin:$PATH"
+  export PATH="$HOME/sdk/go${version}/bin:$PATH"
 }
