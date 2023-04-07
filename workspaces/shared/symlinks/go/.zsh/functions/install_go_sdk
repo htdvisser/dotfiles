@@ -1,0 +1,12 @@
+version=$1
+
+if [[ -z "$version" ]]; then
+  echo "Usage: install_go_sdk [VERSION]"
+  return 1
+fi
+
+version=${version#"go"}
+
+go install "golang.org/dl/go${version}@latest"
+
+$GOBIN/go${version} download
