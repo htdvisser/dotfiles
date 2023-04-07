@@ -6,6 +6,9 @@
 [alias]
   b = branch --show-current
   co = checkout
+  main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+  com = "!f(){ git checkout $(git main-branch) $@;}; f"
+  upm = "!f(){ git pull --rebase --autostash origin $(git main-branch) $@;}; f"
   s = status
 [blame]
   showEmail = true
