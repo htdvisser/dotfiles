@@ -5,8 +5,18 @@ if [[ -z "$version" ]]; then
   return 1
 fi
 
+if [[ "$version" = "latest" ]]; then
+  curl -sSL "https://go.dev/dl/?mode=json" | \
+    jq -r '.[] | .version | ltrimstr("go")' | \
+    while read version; do
+      go install "golang.org/dl/go${version}@latest"
+      "go${version}" download
+    done
+  return 0
+fi
+
 version=${version#"go"}
 
 go install "golang.org/dl/go${version}@latest"
 
-$GOBIN/go${version} download
+"go${version}" download
