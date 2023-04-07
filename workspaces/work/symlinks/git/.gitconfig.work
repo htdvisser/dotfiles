@@ -1,0 +1,6 @@
+[url "git@gitlab.1password.io:"]
+  insteadOf = https://gitlab.1password.io/
+
+[user]
+  email = hylke.visser@agilebits.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILdgam4xhQIqxs3ZCaSUf6S7DPOnE9leU1Zj+D4KqQme
