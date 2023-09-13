@@ -1,0 +1,5 @@
+--max-columns=500
+--max-columns-preview
+
+--colors=match:bg:yellow
+--colors=match:fg:white
