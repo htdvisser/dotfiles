@@ -151,6 +151,9 @@
     "https://taskfile.dev/schema.json": "*-Taskfile.yaml",
     "https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json": "*-ci.yml"
   },
+  "[helm]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": true,
