@@ -28,7 +28,9 @@
 
   "files.associations": {
     ".envrc": "shellscript",
-    ".html.tmpl": "gohtml"
+    ".html.tmpl": "gohtml",
+    "Taskfile.yaml": "goyaml",
+    "*-Taskfile.yaml": "goyaml"
   },
   "files.autoSave": "off",
   "files.exclude": {
