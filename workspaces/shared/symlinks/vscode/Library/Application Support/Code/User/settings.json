@@ -145,7 +145,7 @@
     "editor.formatOnSave": true
   },
   "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
