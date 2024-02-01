@@ -156,6 +156,9 @@
   "[helm]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": true,
