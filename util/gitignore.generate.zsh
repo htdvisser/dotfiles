@@ -35,6 +35,7 @@ cat >> $gitignore_file <<EOF
 # --- Other ---
 
 .envrc
+.direnv
 tmp/
 temp/
 EOF
